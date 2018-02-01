@@ -9,8 +9,8 @@ spec:
     run: iotmlwebapp
   ports:
   - protocol: TCP
-    port: 8080
-    targetPort: 8080
+    port: 80
+    targetPort: 80
   type: LoadBalancer
 ---
 apiVersion: extensions/v1beta1
@@ -31,9 +31,7 @@ spec:
         env:
         - name: HOST_PLATFORM
           value: "ACS Kubernetes"
-        - name: BACK_COLOR
-          value: "green"
         ports:
-          - containerPort: 8080
+          - containerPort: 80
       imagePullSecrets:
       - name: regsecret
