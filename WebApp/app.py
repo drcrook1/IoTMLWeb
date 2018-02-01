@@ -5,9 +5,8 @@ Copyright: Microsoft Corporation 2018
 from flask import Flask
 from flask_mongoengine import MongoEngine
 from flask_security import Security
-
-from forms.register_form import ExtendedRegisterForm
-from extensions import csrf, toolbar
+from flask_debugtoolbar import DebugToolbarExtension
+from data.mongo.user import db, user_datastore
 
 def create_app():
     app = Flask(__name__)
@@ -16,18 +15,17 @@ def create_app():
     app.config.from_pyfile('config.py')
 
     # Register BluePrints
-    from views import baseviews
+    from views.baseviews import baseviews
     app.register_blueprint(baseviews)
+
+    from apis.sampleapi import testapi
+    app.register_blueprint(testapi)
 
     register_extensions(app)
 
     return app
 
-
 def register_extensions(app):
-    from data.mongo.user import db, user_datastore
-
-    db.init_app(app)
-
-    csrf.init_app(app)    
+    toolbar = DebugToolbarExtension()
+    #db.init_app(app)
     #security = Security(app, user_datastore, register_form=ExtendedRegisterForm)

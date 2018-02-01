@@ -1,14 +1,11 @@
 Flask
 Flask_RESTful
 Flask_Script
-Flask_SQLAlchemy
 numpy
 pandas
-pymssql
 Werkzeug
 WTForms
 flask-mongoengine
-Pillow
 Flask-JSGlue
 flask-debugtoolbar
 flask-security
