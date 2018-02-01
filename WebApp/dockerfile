@@ -1,0 +1,26 @@
+#
+# Dockerfile for building the production container
+#
+
+FROM ubuntu:16.04
+
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y -qq build-essential libssl-dev libffi-dev python3-dev curl python3-pip
+RUN pip3 install --upgrade pip
+
+ADD requirements.txt /app/
+RUN pip3 install -r /app/requirements.txt
+
+EXPOSE 80
+
+COPY ./ /app/
+
+# Ensure that Python outputs everything that's printed inside
+# the application rather than buffering it.
+ENV PYTHONUNBUFFERED 1
+
+# Turn on the Flask-DebugToolbar
+ENV FLASK_DEBUG 1
+
+CMD ["python3", "/app/run.py"]
