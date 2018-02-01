@@ -35,3 +35,5 @@ spec:
           value: "green"
         ports:
           - containerPort: 8080
+      imagePullSecrets:
+      - name: regsecret
