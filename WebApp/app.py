@@ -25,7 +25,7 @@ def create_app():
 
 
 def register_extensions(app):
-    #from data.mongo.user import db, user_datastore
+    from data.mongo.user import db, user_datastore
 
     db.init_app(app)
 
