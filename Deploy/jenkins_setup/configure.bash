@@ -10,6 +10,6 @@ cd IoTMLWeb
 sudo docker build -t iotml.azurecr.io/iotmlwebapp ./WebApp
 sudo docker push iotml.azurecr.io/iotmlwebapp
 
-kubectl create secret docker-registry regsecret --docker-server=iotml.azurecr.io --docker-username=iotml --docker-password=3FjFUQK51wT/3TRXbHPjEmruCkGUUkFc
+kubectl create secret docker-registry regsecret --docker-server=iotml.azurecr.io --docker-username=iotml --docker-password=3FjFUQK51wT/3TRXbHPjEmruCkGUUkFc --docker-email=dacrook@microsoft.com
 
 kubectl create -f ./WebApp/webapp.yaml --record
